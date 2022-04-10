@@ -3,28 +3,30 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './admin/components/navbar/navbar.component';
-import { ToolbarComponent } from './admin/components/toolbar/toolbar.component';
-import { StudentsComponent } from './admin/components/students/students.component';
+import { PupilsComponent } from './admin/components/pupils/pupils.component';
 import { NotFoundComponent } from './admin/pages/not-found/not-found.component';
 import { LayoutComponent } from './admin/components/layout/layout.component';
 import { HomeComponent } from './admin/pages/home/home.component';
+import { StudentsComponent } from './admin/pages/students/students.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    ToolbarComponent,
-    StudentsComponent,
-    NotFoundComponent,
-    LayoutComponent,
-    HomeComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		PupilsComponent,
+		NotFoundComponent,
+		LayoutComponent,
+		HomeComponent,
+		StudentsComponent,
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		BrowserAnimationsModule,
+		MaterialModule,
+	],
+	providers: [],
+	bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
