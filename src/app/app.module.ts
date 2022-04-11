@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { NewStudentComponent } from './admin/components/new-student/new-student.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HeadingSizeDirective } from './admin/directives/heading-size.directive';
 
 @NgModule({
 	declarations: [
@@ -22,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 		HomeComponent,
 		StudentsComponent,
 		NewStudentComponent,
+  HeadingSizeDirective,
 	],
 	imports: [
 		BrowserModule,
