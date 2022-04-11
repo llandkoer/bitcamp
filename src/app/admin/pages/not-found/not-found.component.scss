@@ -1,0 +1,40 @@
+div{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+
+	width: 100vw;
+	height: 100vh;
+
+	background-color: #1b1b1b;
+
+	@keyframes pulse {
+		0% {transform: scale(1);}
+		50% {transform: scale(1.5);}
+		100% {transform: scale(1);}
+	}
+
+	h2{
+		margin-bottom: 50px;
+
+		font-size: 7rem;
+		color: #c8ff55;
+
+		animation-name: pulse;
+		animation-duration: 1s;
+	}
+
+	p{
+		margin-bottom: 30px;
+
+		font-size: 1.5rem;
+		color: #c8ff55;
+		text-align: center;
+	}
+
+	a{
+		background-color: rgba(237,253,203,255);
+		color: #1b1b1b;
+	}
+}
