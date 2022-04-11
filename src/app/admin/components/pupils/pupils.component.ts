@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterLinkWithHref } from '@angular/router';
 import { Student } from 'src/app/models/student.model';
 
 @Component({
@@ -7,13 +8,7 @@ import { Student } from 'src/app/models/student.model';
 	styleUrls: ['./pupils.component.scss'],
 })
 export class PupilsComponent implements OnInit {
-	displayedColumns: string[] = [
-		'name',
-		'email',
-		'gender',
-		'update',
-		'delete',
-	];
+	displayedColumns: string[] = ['name', 'email', 'gender', 'update', 'delete'];
 	students: Student[] = [
 		{
 			id: 1,
@@ -69,4 +64,10 @@ export class PupilsComponent implements OnInit {
 	constructor() {}
 
 	ngOnInit(): void {}
+
+	deleteStudent(student: Student) {
+		this.students = this.students.filter(
+			(pupil) => this.students.indexOf(pupil) !== this.students.indexOf(student)
+		);
+	}
 }
