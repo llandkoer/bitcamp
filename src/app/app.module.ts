@@ -12,7 +12,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { NewStudentComponent } from './admin/components/new-student/new-student.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FullNamePipe } from './pipes/full-name.pipe';
 
 @NgModule({
 	declarations: [
@@ -23,7 +22,6 @@ import { FullNamePipe } from './pipes/full-name.pipe';
 		HomeComponent,
 		StudentsComponent,
 		NewStudentComponent,
-  FullNamePipe,
 	],
 	imports: [
 		BrowserModule,
