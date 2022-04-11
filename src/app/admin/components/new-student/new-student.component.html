@@ -1,0 +1,25 @@
+<form
+	[formGroup]="updateStudentForm"
+	(ngSubmit)="onSubmit()"
+	#updatePupilForm="ngForm"
+>
+	<mat-form-field>
+		<mat-label>Name</mat-label>
+		<input matInput type="text" formControlName="name" #name />
+	</mat-form-field>
+
+	<mat-form-field>
+		<mat-label>Email</mat-label>
+		<input matInput type="email" formControlName="email" #email />
+	</mat-form-field>
+
+	<mat-form-field>
+		<mat-label>Gender</mat-label>
+		<mat-select #gender formControlName="gender">
+			<mat-option value="male">Male</mat-option>
+			<mat-option value="female">Female</mat-option>
+		</mat-select>
+	</mat-form-field>
+
+	<button mat-button type="submit">Ok</button>
+</form>

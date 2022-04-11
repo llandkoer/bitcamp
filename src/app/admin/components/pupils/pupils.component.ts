@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLinkWithHref } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 import { Student } from 'src/app/models/student.model';
+import { NewStudentComponent } from '../new-student/new-student.component';
 
 @Component({
 	selector: 'app-pupils',
@@ -61,7 +62,7 @@ export class PupilsComponent implements OnInit {
 		},
 	];
 
-	constructor() {}
+	constructor(public dialogRef: MatDialog) {}
 
 	ngOnInit(): void {}
 
@@ -69,5 +70,27 @@ export class PupilsComponent implements OnInit {
 		this.students = this.students.filter(
 			(pupil) => this.students.indexOf(pupil) !== this.students.indexOf(student)
 		);
+	}
+
+	openDialogAndCreateOrUpdate(student?: Student) {
+		const dialog = this.dialogRef.open(NewStudentComponent);
+
+		dialog.afterClosed().subscribe((result) => {
+			if (student) {
+				const studentIndex = this.students.indexOf(student);
+				this.students[studentIndex] = {
+					id: this.students[studentIndex].id,
+					...result.data,
+					active: this.students[studentIndex].active,
+				};
+				this.students = [...this.students];
+			} else {
+				this.students = this.students.concat({
+					id: this.students[this.students.length - 1].id + 1,
+					...result.data,
+					active: true,
+				});
+			}
+		});
 	}
 }
