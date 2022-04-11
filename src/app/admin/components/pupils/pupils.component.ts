@@ -8,7 +8,6 @@ import { Student } from 'src/app/models/student.model';
 })
 export class PupilsComponent implements OnInit {
 	displayedColumns: string[] = [
-		'id',
 		'name',
 		'email',
 		'gender',

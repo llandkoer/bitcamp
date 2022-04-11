@@ -25,7 +25,7 @@ export class LayoutComponent implements OnInit {
 				this.sidenav.mode = 'side';
 				this.sidenav.open();
 			}
-			console.log(typeof this.sidenav.mode)
+			// console.log(typeof this.sidenav.mode)
 		})
 	}
 
