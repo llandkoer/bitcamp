@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { StudentsService } from 'src/app/core/services/students.service';
 import { Student } from 'src/app/models/student.model';
 import { NewStudentComponent } from '../new-student/new-student.component';
 
@@ -10,61 +11,20 @@ import { NewStudentComponent } from '../new-student/new-student.component';
 })
 export class PupilsComponent implements OnInit {
 	displayedColumns: string[] = ['name', 'email', 'gender', 'update', 'delete'];
-	students: Student[] = [
-		{
-			id: 1,
-			name: 'John Doe',
-			email: 'john@doe.com',
-			gender: 'male',
-			active: true,
-		},
-		{
-			id: 2,
-			name: 'Jane Doe',
-			email: 'jane@doe.com',
-			gender: 'female',
-			active: true,
-		},
-		{
-			id: 3,
-			name: 'Charlie Doe',
-			email: 'charlie@doe.com',
-			gender: 'male',
-			active: true,
-		},
-		{
-			id: 4,
-			name: 'Maria Doe',
-			email: 'maria@doe.com',
-			gender: 'female',
-			active: true,
-		},
-		{
-			id: 5,
-			name: 'Alex Doe',
-			email: 'alex@doe.com',
-			gender: 'female',
-			active: true,
-		},
-		{
-			id: 6,
-			name: 'Louis Doe',
-			email: 'louis@doe.com',
-			gender: 'male',
-			active: true,
-		},
-		{
-			id: 7,
-			name: 'Oliver Doe',
-			email: 'oliver@doe.com',
-			gender: 'male',
-			active: true,
-		},
-	];
+	students: Student[] = [];
 
-	constructor(public dialogRef: MatDialog) {}
+	constructor(public dialogRef: MatDialog, private studentsService: StudentsService) {}
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		this.getAllStudents();
+	}
+
+	getAllStudents() {
+		this.studentsService.getAllStudents().subscribe((students) => {
+			this.students = students;
+		}
+		);
+	}
 
 	deleteStudent(student: Student) {
 		this.students = this.students.filter(

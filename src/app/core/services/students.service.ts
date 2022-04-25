@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Student } from 'src/app/models/student.model';
 
 @Injectable({
 	providedIn: 'root',
@@ -9,6 +10,6 @@ export class StudentsService {
 	constructor(private http: HttpClient) {}
 
 	getAllStudents() {
-		return this.http.get(this.baseUrl);
+		return this.http.get<Student[]>(this.baseUrl);
 	}
 }
