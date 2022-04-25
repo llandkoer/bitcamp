@@ -12,4 +12,8 @@ export class StudentsService {
 	getAllStudents() {
 		return this.http.get<Student[]>(this.baseUrl);
 	}
+
+	deleteStudent(student: Student) {
+		return this.http.delete(`${this.baseUrl}/${student.id}`);
+	}
 }

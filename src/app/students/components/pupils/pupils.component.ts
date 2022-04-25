@@ -13,7 +13,10 @@ export class PupilsComponent implements OnInit {
 	displayedColumns: string[] = ['name', 'email', 'gender', 'update', 'delete'];
 	students: Student[] = [];
 
-	constructor(public dialogRef: MatDialog, private studentsService: StudentsService) {}
+	constructor(
+		public dialogRef: MatDialog,
+		private studentsService: StudentsService
+	) {}
 
 	ngOnInit(): void {
 		this.getAllStudents();
@@ -22,14 +25,16 @@ export class PupilsComponent implements OnInit {
 	getAllStudents() {
 		this.studentsService.getAllStudents().subscribe((students) => {
 			this.students = students;
-		}
-		);
+		});
 	}
 
 	deleteStudent(student: Student) {
-		this.students = this.students.filter(
-			(pupil) => this.students.indexOf(pupil) !== this.students.indexOf(student)
-		);
+		this.studentsService.deleteStudent(student).subscribe(() => {
+			this.students = this.students.filter(
+				(pupil) =>
+					this.students.indexOf(pupil) !== this.students.indexOf(student)
+			);
+		});
 	}
 
 	openDialogAndCreateOrUpdate(student?: Student) {
