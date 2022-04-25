@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Student } from 'src/app/models/student.model';
+import { CreateStudentDTO, Student } from 'src/app/models/student.model';
 
 @Injectable({
 	providedIn: 'root',
@@ -15,5 +15,9 @@ export class StudentsService {
 
 	deleteStudent(student: Student) {
 		return this.http.delete(`${this.baseUrl}/${student.id}`);
+	}
+
+	createStudent(student: CreateStudentDTO) {
+		return this.http.post<Student>(this.baseUrl, student);
 	}
 }

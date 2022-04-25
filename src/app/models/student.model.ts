@@ -5,3 +5,5 @@ export interface Student {
 	gender: string;
 	active: boolean;
 }
+
+export interface CreateStudentDTO extends Omit<Student, 'id'> {}

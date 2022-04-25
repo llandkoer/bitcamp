@@ -50,10 +50,8 @@ export class PupilsComponent implements OnInit {
 				};
 				this.students = [...this.students];
 			} else {
-				this.students = this.students.concat({
-					id: this.students[this.students.length - 1].id + 1,
-					...result.data,
-					active: true,
+				this.studentsService.createStudent(result.data).subscribe((student) => {
+					this.students = [...this.students, { ...student, active: true }];
 				});
 			}
 		});
