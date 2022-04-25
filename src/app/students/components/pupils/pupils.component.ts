@@ -25,6 +25,7 @@ export class PupilsComponent implements OnInit {
 	getAllStudents() {
 		this.studentsService.getAllStudents().subscribe((students) => {
 			this.students = students;
+			console.log(this.students);
 		});
 	}
 
@@ -42,13 +43,16 @@ export class PupilsComponent implements OnInit {
 
 		dialog.afterClosed().subscribe((result) => {
 			if (student) {
-				const studentIndex = this.students.indexOf(student);
-				this.students[studentIndex] = {
-					id: this.students[studentIndex].id,
-					...result.data,
-					active: this.students[studentIndex].active,
-				};
-				this.students = [...this.students];
+				this.studentsService
+					.updateStudent(student.id, result.data)
+					.subscribe((updatedStudent) => {
+						const studentIndex = this.students.indexOf(student);
+						this.students[studentIndex] = {
+							...updatedStudent,
+							active: this.students[studentIndex].active,
+						};
+						this.students = [...this.students];
+					});
 			} else {
 				this.studentsService.createStudent(result.data).subscribe((student) => {
 					this.students = [...this.students, { ...student, active: true }];

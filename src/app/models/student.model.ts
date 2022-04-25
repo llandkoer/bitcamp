@@ -7,3 +7,5 @@ export interface Student {
 }
 
 export interface CreateStudentDTO extends Omit<Student, 'id'> {}
+
+export interface UpdateStudentDTO extends Partial<CreateStudentDTO> {}

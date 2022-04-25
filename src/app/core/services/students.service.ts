@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CreateStudentDTO, Student } from 'src/app/models/student.model';
+import { CreateStudentDTO, Student, UpdateStudentDTO } from 'src/app/models/student.model';
 
 @Injectable({
 	providedIn: 'root',
@@ -19,5 +19,9 @@ export class StudentsService {
 
 	createStudent(student: CreateStudentDTO) {
 		return this.http.post<Student>(this.baseUrl, student);
+	}
+
+	updateStudent(id: string, dto: UpdateStudentDTO) {
+		return this.http.put<Student>(`${this.baseUrl}/${id}`, dto);
 	}
 }
