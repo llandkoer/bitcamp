@@ -1,9 +1,7 @@
-type gender = "male" | "female";
-
 export interface Student {
-	id: number;
+	id: string;
 	name: string;
 	email: string;
-	gender: gender;
+	gender: string;
 	active: boolean;
 }
